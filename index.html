@@ -1039,7 +1039,7 @@
     <!-- MUSIC - Web Audio API Happy Birthday -->
     <button class="music-btn" id="musicBtn" title="Bật/Tắt nhạc">🎵</button>
 
-    <script>
+    <!-- <script>
       // ===== HAPPY BIRTHDAY MUSIC BOX (Web Audio API) =====
       const MusicBox = (() => {
         let ctx = null;
@@ -1182,7 +1182,7 @@
           },
         };
       })();
-    </script>
+    </script> -->
 
     <!-- THREE.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -1755,15 +1755,18 @@
       }
 
       // ===== MUSIC BUTTON =====
+      const bgMusic = new Audio("audio.mp3");
+      bgMusic.loop = true;
+
       const musicBtn = document.getElementById("musicBtn");
 
       musicBtn.addEventListener("click", () => {
-        if (MusicBox.playing) {
-          MusicBox.stop();
+        if (!bgMusic.paused) {
+          bgMusic.pause();
           musicBtn.textContent = "🎵";
           musicBtn.classList.remove("playing");
         } else {
-          MusicBox.start();
+          bgMusic.play();
           musicBtn.textContent = "🔊";
           musicBtn.classList.add("playing");
           popConfetti(60);
